@@ -18,7 +18,7 @@ cat /package/Gemfile >> /build/Gemfile
 
 # merge entrypoint
 ENTRYPOINT=`grep APP_ENTRYPOINT  /package/Dockerfile | awk '{split($0,a," "); print a[3]}'`
-ENTRYPOIN=${ENTRYPOINT:="web.rb"}
+ENTRYPOINT=${ENTRYPOINT:="web.rb"}
 cat /package/$ENTRYPOINT >> /build/lib/web.rb
 
 # copy other yml and ruby files if they exist
