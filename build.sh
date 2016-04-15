@@ -4,7 +4,7 @@
 TEMPLATE=`grep semtech/mu-sinatra-template  /package/Dockerfile | awk '{split($0,a,":"); print a[2]}'`
 wget https://raw.githubusercontent.com/mu-semtech/mu-sinatra-template/v$TEMPLATE/Gemfile -O /build/Gemfile
 wget https://raw.githubusercontent.com/mu-semtech/mu-sinatra-template/v$TEMPLATE/web.rb -O /build/lib/web.rb
-
+wget https://raw.githubusercontent.com/mu-semtech/mu-sinatra-template/v$TEMPLATE/sinatra_template/helpers.rb -O /build/lib/sinatra_template/helpers.rb
 # remove eval/include lines (assumes these are the last 3 lines, dangerous)
 sed -i '$ d' /build/Gemfile
 sed -i '$ d' /build/Gemfile
