@@ -31,4 +31,4 @@ MU_CORE = RDF::Vocabulary.new(MU.to_uri.to_s + 'core/')
 ###
 
 helpers SinatraTemplate::Helpers
-require_relative "ext/#{app_file}"
+require_relative "ext/web.rb"

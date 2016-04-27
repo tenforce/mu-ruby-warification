@@ -1,9 +1,9 @@
 #!/bin/bash
 
 # retrieve template files
-TEMPLATE=`grep semtech/mu-ruby-template  /package/Dockerfile | awk '{split($0,a,":"); print a[2]}'`
-wget https://raw.githubusercontent.com/mu-semtech/mu-ruby-template/v$TEMPLATE/Gemfile -O /build/Gemfile
-wget https://raw.githubusercontent.com/mu-semtech/mu-ruby-template/v$TEMPLATE/sinatra_template/helpers.rb -O /build/lib/sinatra_template/helpers.rb
+TEMPLATE=`grep semtech/mu-ruby-template  /package/Dockerfile | awk '{split($0,a,":"); print a[2]}' |  tr -d '[:blank:]'`
+wget "https://raw.githubusercontent.com/mu-semtech/mu-ruby-template/v$TEMPLATE/Gemfile" -O /build/Gemfile
+wget "https://raw.githubusercontent.com/mu-semtech/mu-ruby-template/v$TEMPLATE/sinatra_template/helpers.rb" -O /build/lib/sinatra_template/helpers.rb
 # remove eval/include lines (assumes these are the last 3 lines, dangerous)
 sed -i '$ d' /build/Gemfile
 sed -i '$ d' /build/Gemfile
