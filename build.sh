@@ -21,7 +21,7 @@ ENTRYPOINT=${ENTRYPOINT:="web.rb"}
 sed -i "s/#{app_file}/$ENTRYPOINT/" lib/web.rb
 
 # copy other yml and ruby files if they exist
-FILES=`find /package -iname "*.rb" -o -iname "*.yml"`
+FILES=`find /package -iname "*.rb" -o -iname "*.yml" -o -iname "*.xsd" -o -iname "*.wsdl"`
 for file in $FILES;do
   FILEDIR=`dirname $file | sed 's|/package||'`
   echo $FILEDIR
