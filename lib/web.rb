@@ -1,5 +1,6 @@
 require 'rjack-slf4j'
-require 'rjack-slf4j/simple'
+require 'rjack-slf4j'
+require 'rjack-logback'
 require 'sinatra'
 require 'sparql/client'
 require 'json'
@@ -7,13 +8,16 @@ require 'rdf/vocab'
 require 'bson'
 require_relative 'sinatra_template/helpers.rb'
 
+include RJack
 configure do
   set :graph, ENV['MU_APPLICATION_GRAPH']
   set :sparql_client, SPARQL::Client.new(ENV['MU_SPARQL_ENDPOINT'])
 
-  ###
-  # Logging
-  ###
+  java_import 'java.lang.System'
+  config_dir = System.get_property('CONFIG_DIR_VAR')
+  Logback.configure do
+    Logback.load_xml_config("#{config_dir}/logback.xml")
+  end
   log = RJack::SLF4J[ "mu.semtech.logger" ]  
   set :log, log
 end
@@ -31,4 +35,4 @@ MU_CORE = RDF::Vocabulary.new(MU.to_uri.to_s + 'core/')
 ###
 
 helpers SinatraTemplate::Helpers
-require_relative "ext/web.rb"
+require_relative "ext/#{app_file}"
