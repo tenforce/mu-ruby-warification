@@ -13,13 +13,14 @@ sed -i '$ d' /build/Gemfile
 cat /package/Gemfile >> /build/Gemfile
 echo "" >> /build/Gemfile
 echo "gem 'rjack-logback'" >> /build/Gemfile
+echo "gem 'psych'" >> /build/Gemfile
 
 # merge entrypoint
 ENTRYPOINT=`grep APP_ENTRYPOINT  /package/Dockerfile | awk '{split($0,a," "); print a[3]}'`
 ENTRYPOINT=${ENTRYPOINT:="web.rb"}
 
 sed -i "s/#{app_file}/$ENTRYPOINT/" lib/web.rb
-sed -i "s/CONFIG_DIR_VAR/$CONFIG_DIR/"
+sed -i "s/CONFIG_DIR_VAR/$CONFIG_DIR/" lib/web.rb
 # copy other yml and ruby files if they exist
 FILES=`find /package -iname "*.rb" -o -iname "*.yml" -o -iname "*.xsd" -o -iname "*.wsdl"`
 for file in $FILES;do

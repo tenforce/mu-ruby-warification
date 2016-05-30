@@ -5,9 +5,9 @@
   <container-descriptor>
     <prefer-web-inf-classes>false</prefer-web-inf-classes>
     <prefer-application-packages>
-      <package-name>org.joda.*</package-name>
-      <package-name>org.jruby.*</package-name>
-      <package-name>org.bouncycastle.*</package-name>
+      <package-name>org.joda</package-name>
+      <package-name>org.jruby</package-name>
+      <package-name>org.bouncycastle</package-name>
       <package-name>org.slf4j</package-name>
     </prefer-application-packages>
     <show-archived-real-path-enabled>true</show-archived-real-path-enabled>

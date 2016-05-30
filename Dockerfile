@@ -34,7 +34,7 @@ RUN mkdir -p "$GEM_HOME" "$BUNDLE_BIN" \
 MAINTAINER Niels Vandekeybus <progster@gmail.com>
 ADD . /build
 WORKDIR /build
-RUN mkdir -p /build/lib/ext && mkdir -p /build/lib/sinatra_template && gem install bundler && gem install warbler
+RUN mkdir -p /build/lib/ext && mkdir -p /build/lib/sinatra_template && gem install bundler && gem install warbler -v 2.0.0
 CMD "./build.sh"
 
 
