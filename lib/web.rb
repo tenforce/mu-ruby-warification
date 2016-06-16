@@ -7,6 +7,7 @@ require 'rdf/vocab'
 require 'bson'
 require 'psych'
 require_relative 'sinatra_template/helpers.rb'
+require_relative 'lib/escape_helpers.rb'
 
 include RJack
 configure do
@@ -32,6 +33,10 @@ end
 include RDF
 MU = RDF::Vocabulary.new('http://mu.semte.ch/vocabularies/')
 MU_CORE = RDF::Vocabulary.new(MU.to_uri.to_s + 'core/')
+MU_EXT = RDF::Vocabulary.new(MU.to_uri.to_s + 'ext/')
+
+SERVICE_RESOURCE_BASE = 'http://mu.semte.ch/services/'
+
 
 ###
 # Helpers
