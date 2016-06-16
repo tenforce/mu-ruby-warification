@@ -17,7 +17,11 @@ configure do
   config = Psych.load_file("#{config_dir}/config.yml")
 
   set :graph, config['MU_APPLICATION_GRAPH']
-  set :sparql_client, SPARQL::Client.new(config['MU_SPARQL_ENDPOINT'])
+  if config['MU_SPARQL_AUTH']
+   set :sparql_client, SPARQL::Client.new(config['MU_SPARQL_ENDPOINT'], headers: {"Authorization" => "Basic #{MU_SPARQL_AUTH}"})
+  else
+    set :sparql_client, SPARQL::Client.new(config['MU_SPARQL_ENDPOINT'])
+  end
 
   Logback.configure do
     Logback.load_xml_config("#{config_dir}/logback.xml")
