@@ -9,6 +9,7 @@
       <package-name>org.jruby</package-name>
       <package-name>org.bouncycastle</package-name>
       <package-name>org.slf4j</package-name>
+      <package-name>ch.qos.logback</package-name>
     </prefer-application-packages>
     <show-archived-real-path-enabled>true</show-archived-real-path-enabled>
   </container-descriptor>
