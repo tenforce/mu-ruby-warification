@@ -2,7 +2,7 @@
 
 set -e
 
-rm -fR /app/target
+rm -fR /app/target/*
 mkdir -p /app/target/app/ext
 cp -R /warification/{app,lib} /app/target/
 cp -R /opt/mu-ruby-template-${MU_RUBY_TEMPLATE_VERSION#v*}/{lib,sinatra_template,web.rb} /app/target/app/
