@@ -10,7 +10,7 @@ Usage
 ```
 docker run -it --rm \
     -v <ABSOLUTE_PATH_TO_YOUR_APP>:/app \
-    -e <YOUR_APP_NAME> \
+    -e SERVICE_NAME=<YOUR_APP_NAME> \
     tenforce/mu-ruby-warification
 ```
 
